@@ -10,6 +10,7 @@ def str_speed_in_kb(val):
 
 
 def download_speed(url, time_limit, is_verbose):
+    print 'Downloading %s, time-limit %d sec' % url, time_limit
     average_speed = 0.0
     maximum_speed = 0.0
     try:
