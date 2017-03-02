@@ -1,5 +1,6 @@
 import socket
 import urllib2
+import ssl
 import time
 import optparse
 
@@ -52,6 +53,10 @@ def download_speed(url, time_limit, is_verbose):
 
     except socket.timeout:
         print 'timed out'
+    except ssl.SSLError, sslError:
+        print 'error: %s' % sslError.message
+    except urllib2.URLError, urlError:
+        print 'error: %s' % urlError.message
 
     print 'average: ' + str_speed_in_kb(average_speed)
     print 'maximum: ' + str_speed_in_kb(maximum_speed)
